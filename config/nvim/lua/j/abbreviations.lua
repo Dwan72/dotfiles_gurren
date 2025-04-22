@@ -1,5 +1,0 @@
-vim.cmd.iabbrev('adn', 'and')
-vim.cmd.iabbrev('waht', 'what')
-vim.cmd.iabbrev('tehn', 'then')
-vim.cmd.iabbrev('taht', 'that')
-vim.cmd.iabbrev('cehck', 'check')
