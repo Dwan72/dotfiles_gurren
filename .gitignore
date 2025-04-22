@@ -27,3 +27,4 @@ dots/emacs.d/elpa/
 .vim
 
 .luarc.json
+config/zsh/.zshrc

@@ -1,38 +1,59 @@
 return {
-  "nvim-tree/nvim-tree.lua",
-  dependencies = "nvim-tree/nvim-web-devicons",
+  'nvim-tree/nvim-tree.lua',
+  dependencies = 'nvim-tree/nvim-web-devicons',
   config = function()
-    local nvimtree = require("nvim-tree")
+    local nvimtree = require 'nvim-tree'
 
     -- recommended settings from nvim-tree documentation
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
 
-    nvimtree.setup({
+    nvimtree.setup {
       on_attach = function(bufnr)
-        local api = require("nvim-tree.api")
+        local api = require 'nvim-tree.api'
 
         local function opts(desc)
-          return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+          return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
         end
         api.config.mappings.default_on_attach(bufnr)
 
-        -- custom keymaps
-        vim.keymap.set("n", "J", function()
-          for _ = 1, 5 do
-            api.node.navigate.sibling.next()
-          end
-        end, opts("Move down 5 nodes"))
+        local function edit_or_open()
+          local node = api.tree.get_node_under_cursor()
 
-        vim.keymap.set("n", "K", function()
-          for _ = 1, 5 do
-            api.node.navigate.sibling.prev()
+          if node.nodes ~= nil then
+            -- expand or collapse folder
+            api.node.open.edit()
+          else
+            -- open file
+            api.node.open.edit()
+            -- Close the tree if file was opened
+            api.tree.close()
           end
-        end, opts("Move up 5 nodes"))
+        end
+        -- open as vsplit on current node
+        local function vsplit_preview()
+          local node = api.tree.get_node_under_cursor()
+
+          if node.nodes ~= nil then
+            -- expand or collapse folder
+            api.node.open.edit()
+          else
+            -- open file as vsplit
+            api.node.open.vertical()
+          end
+
+          -- Finally refocus on tree if it was lost
+          api.tree.focus()
+        end
+        vim.keymap.set('n', 'l', edit_or_open, opts 'Edit Or Open')
+        vim.keymap.set('n', 'L', vsplit_preview, opts 'Vsplit Preview')
+        vim.keymap.set('n', 'h', api.tree.close, opts 'Close')
+        vim.keymap.set('n', 'H', api.tree.collapse_all, opts 'Collapse All')
       end,
 
       view = {
-        width = 35,
+        width = 60,
+        side = 'right',
         relativenumber = true,
       },
       -- change folder arrow icons
@@ -43,8 +64,8 @@ return {
         icons = {
           glyphs = {
             folder = {
-              arrow_closed = "", -- arrow when folder is closed
-              arrow_open = "", -- arrow when folder is open
+              arrow_closed = '', -- arrow when folder is closed
+              arrow_open = '', -- arrow when folder is open
             },
           },
         },
@@ -60,20 +81,21 @@ return {
         },
       },
       filters = {
-        custom = { ".DS_Store" },
+        custom = { '.DS_Store' },
       },
       git = {
         ignore = false,
       },
-    })
+    }
 
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
 
-    keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
-    keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
-    keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
-    keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+    keymap.set('n', '<C-b>', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file explorer' }) -- toggle file explorer
+    keymap.set('n', '<leader>ee', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file explorer' }) -- toggle file explorer
+    keymap.set('n', '<leader>ef', '<cmd>NvimTreeFindFileToggle<CR>', { desc = 'Toggle file explorer on current file' }) -- toggle file explorer on current file
+    keymap.set('n', '<leader>ec', '<cmd>NvimTreeCollapse<CR>', { desc = 'Collapse file explorer' }) -- collapse file explorer
+    keymap.set('n', '<leader>er', '<cmd>NvimTreeRefresh<CR>', { desc = 'Refresh file explorer' }) -- refresh file explorer
 
     nvimtree.setup()
   end,

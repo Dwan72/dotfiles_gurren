@@ -9,6 +9,7 @@ local entry_display = require 'telescope.pickers.entry_display'
 ---- Helper functions ----
 
 ---Gets the File Path and its Tail (the file name) as a Tuple
+
 ---@param file_name string
 ---@return string, string
 function M.get_path_and_tail(file_name)
