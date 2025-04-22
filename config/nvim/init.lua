@@ -10,15 +10,17 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
+require 'josean.core'
+require 'josean.lazy'
 
-require 'j.mappings'
-require 'j.autocmds'
-require 'j.commands'
-require 'j.settings'
-require 'j.alternatives'
-require 'j.statusline'
-require 'j.tabline'
-require 'j.disable_lint_rule'
+--require 'j.mappings'
+--require 'j.autocmds'
+--require 'j.commands'
+--require 'j.settings'
+--require 'j.alternatives'
+--require 'j.statusline'
+--require 'j.tabline'
+--require 'j.disable_lint_rule'
 
 require('lazy').setup('j.plugins', {
   install = {
