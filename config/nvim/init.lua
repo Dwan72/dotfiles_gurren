@@ -22,14 +22,14 @@ require 'josean.lazy'
 --require 'j.tabline'
 --require 'j.disable_lint_rule'
 
-require('lazy').setup('j.plugins', {
-  install = {
-    colorscheme = { 'kanagawa' },
-  },
-  dev = {
-    path = '~/Code/Projects',
-  },
-  change_detection = {
-    notify = false,
-  },
-})
+-- require('lazy').setup('j.plugins', {
+--   install = {
+--     colorscheme = { 'kanagawa' },
+--   },
+--   dev = {
+--     path = '~/Code/Projects',
+--   },
+--   change_detection = {
+--     notify = false,
+--   },
+-- })
