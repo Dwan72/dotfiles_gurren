@@ -85,3 +85,11 @@ export XDEBUG_CONFIG="idekey=VSCODE"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Python
+alias python="python3"
+alias pip="pip3"
+alias so="source ~/Projects/dotfiles_gurren/dots/zshenv"
+
+
+

@@ -101,10 +101,11 @@ source $ZDOTDIR/.packages/zsh-manydots-magic/manydots-magic
 function take() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
 compdef _directories take
 
-if [[ "$OPEN_PROJECT" == 1 ]]; then
-    source $HOME/dotfiles/bin/project
-fi
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# pyenv things
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
