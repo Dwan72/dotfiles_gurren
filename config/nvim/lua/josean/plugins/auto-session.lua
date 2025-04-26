@@ -2,16 +2,6 @@ return {
   'rmagatti/auto-session',
   config = function()
     local auto_session = require 'auto-session'
-<<<<<<< Updated upstream
-
-    auto_session.setup {
-      auto_restore_enabled = true,
-      auto_session_suppress_dirs = { '~/', '~/Dev/', '~/Downloads', '~/Documents', '~/Desktop/' },
-      session_lens = {
-        load_on_setup = true,
-      },
-    }
-
     local uv = vim.loop
     local timer = uv.new_timer()
     timer:start(
@@ -21,7 +11,6 @@ return {
         vim.cmd 'silent! SessionSave'
       end)
     )
-=======
     vim.opt.sessionoptions = { 'buffers', 'curdir', 'tabpages', 'winsize' }
     auto_session.setup {
       auto_restore_enabled = true,
@@ -30,7 +19,6 @@ return {
       auto_save_enabled = true, -- Enable auto-save
       auto_session_enable_last_session = false, -- Don't auto-load last session
     }
->>>>>>> Stashed changes
 
     local keymap = vim.keymap
 
