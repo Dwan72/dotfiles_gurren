@@ -4,13 +4,15 @@ return {
   build = ':TSUpdate',
   dependencies = {
     'windwp/nvim-ts-autotag',
+    'nvim-treesitter/nvim-treesitter-textobjects', -- Required for textobjects
   },
   config = function()
     -- import nvim-treesitter plugin
     local treesitter = require 'nvim-treesitter.configs'
 
     -- configure treesitter
-    treesitter.setup { -- enable syntax highlighting
+    treesitter.setup {
+      -- enable syntax highlighting
       highlight = {
         enable = true,
       },
@@ -44,27 +46,35 @@ return {
         'vimdoc',
         'c',
       },
-      textObjects = {
-        enable = true,
-
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            ['af'] = '@function.outer',
+            ['if'] = '@function.inner',
+            ['ac'] = '@class.outer',
+            ['ic'] = '@class.inner',
+          },
+        },
         move = {
           enable = true,
-          set_jumps = true, -- whether to set jumps in the jumplist
+          set_jumps = true,
           goto_next_start = {
-            [']f'] = '@function.outer',
-            [']]'] = '@class.outer',
+            [']f'] = { query = '@function.outer', desc = 'Next function start' },
+            [']]'] = { query = '@class.outer', desc = 'Next class start' },
           },
           goto_next_end = {
-            [']F'] = '@function.outer',
-            [']['] = '@class.outer',
+            [']F'] = { query = '@function.outer', desc = 'Next function end' },
+            [']['] = { query = '@class.outer', desc = 'Next class end' },
           },
           goto_previous_start = {
-            ['[f'] = '@function.outer',
-            ['[['] = '@class.outer',
+            ['[f'] = { query = '@function.outer', desc = 'Previous function start' },
+            ['[['] = { query = '@class.outer', desc = 'Previous class start' },
           },
           goto_previous_end = {
-            ['[F'] = '@function.outer',
-            ['[]'] = '@class.outer',
+            ['[F'] = { query = '@function.outer', desc = 'Previous function end' },
+            ['[]'] = { query = '@class.outer', desc = 'Previous class end' },
           },
         },
       },
