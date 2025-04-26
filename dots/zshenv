@@ -91,5 +91,6 @@ alias python="python3"
 alias pip="pip3"
 alias so="source ~/Projects/dotfiles_gurren/dots/zshenv"
 
+source ~/.zprofile
 
 

@@ -36,11 +36,11 @@ return {
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end, opts_with_desc 'Harpoon toggle quick menu')
 
-    vim.keymap.set('n', '<leader>p', function()
-      toggle_telescope(harpoon:list())
-    end, opts_with_desc('Harpoon list', { nowait = true }))
+    -- vim.keymap.set('n', '<leader>p', function()
+    --   toggle_telescope(harpoon:list())
+    -- end, opts_with_desc('Harpoon list', { nowait = true }))
 
-    vim.keymap.set('n', '<C-o>', function()
+    vim.keymap.set('n', '<leader>p', function()
       harpoon:list():add()
     end, opts_with_desc 'Harpoon add to list')
 

@@ -21,19 +21,15 @@ return {
           local node = api.tree.get_node_under_cursor()
 
           if node.nodes ~= nil then
-            -- expand or collapse folder
             api.node.open.edit()
           else
-            -- open file
             api.node.open.edit()
-            -- Close the tree if file was opened
             api.tree.close()
           end
         end
         -- open as vsplit on current node
         local function vsplit_preview()
           local node = api.tree.get_node_under_cursor()
-
           if node.nodes ~= nil then
             -- expand or collapse folder
             api.node.open.edit()
@@ -45,6 +41,7 @@ return {
           -- Finally refocus on tree if it was lost
           api.tree.focus()
         end
+        local node = api.tree.get_node_under_cursor()
         vim.keymap.set('n', 'l', edit_or_open, opts 'Edit Or Open')
         vim.keymap.set('n', 'L', vsplit_preview, opts 'Vsplit Preview')
         vim.keymap.set('n', 'h', api.tree.close, opts 'Close')
@@ -73,13 +70,13 @@ return {
       -- disable window_picker for
       -- explorer to work well with
       -- window splits
-      actions = {
-        open_file = {
-          window_picker = {
-            enable = false,
-          },
-        },
-      },
+      -- actions = {
+      --   open_file = {
+      --     window_picker = {
+      --       enable = false,
+      --     },
+      --   },
+      -- },
       filters = {
         custom = { '.DS_Store' },
       },
@@ -95,8 +92,5 @@ return {
     keymap.set('n', '<leader>ee', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file explorer' }) -- toggle file explorer
     keymap.set('n', '<leader>ef', '<cmd>NvimTreeFindFileToggle<CR>', { desc = 'Toggle file explorer on current file' }) -- toggle file explorer on current file
     keymap.set('n', '<leader>ec', '<cmd>NvimTreeCollapse<CR>', { desc = 'Collapse file explorer' }) -- collapse file explorer
-    keymap.set('n', '<leader>er', '<cmd>NvimTreeRefresh<CR>', { desc = 'Refresh file explorer' }) -- refresh file explorer
-
-    nvimtree.setup()
   end,
 }
