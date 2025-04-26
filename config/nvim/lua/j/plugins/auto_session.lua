@@ -9,6 +9,10 @@ return {
     -- https://github.com/neovim/neovim/issues/11330
     post_restore_cmds = { 'silent !kill -s SIGWINCH $PPID' },
     pre_save_cmds = { close_all_floating_windows, 'cclose' },
+    auto_session_enable_last_session = false,
+    auto_save_enabled = true, -- Enable auto-save
+    auto_restore_enabled = true, -- Enable auto-restore
+
     log_level = 'error',
     session_lens = {
       load_on_setup = false,
