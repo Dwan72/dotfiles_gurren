@@ -107,5 +107,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # pyenv things
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 

@@ -24,12 +24,12 @@ return {
             gitsigns.nav_hunk 'prev'
           end
         end)
-        map('n', '<leader>gp', gitsigns.preview_hunk)
-        map('n', '<leader>gi', gitsigns.preview_hunk_inline)
+        map('n', '<leader>gp', gitsigns.preview_hunk, { desc = 'preview hunk' })
+        map('n', '<leader>gi', gitsigns.preview_hunk_inline, { desc = 'preview hunk inline ' })
         map('n', '<leader>gb', function()
           gitsigns.blame_line { full = true }
-        end)
-        map('n', '<leader>gr', gitsigns.reset_hunk)
+        end, { desc = 'blame line' })
+        map('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'reset hunk' })
       end,
     }
   end,

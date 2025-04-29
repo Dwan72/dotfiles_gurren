@@ -4,18 +4,6 @@ local keymap = vim.keymap -- for conciseness
 
 keymap.set('i', 'jk', '<ESC>', { desc = 'Exit insert mode with jk' })
 
--- window management
-keymap.set('n', '<leader>sv', '<C-w>v', { desc = 'Split window vertically' }) -- split window vertically
-keymap.set('n', '<leader>sh', '<C-w>s', { desc = 'Split window horizontally' }) -- split window horizontally
-keymap.set('n', '<leader>se', '<C-w>=', { desc = 'Make splits equal size' }) -- make split windows equal width & height
-keymap.set('n', '<leader>sx', '<cmd>close<CR>', { desc = 'Close current split' }) -- close current split window
-
-keymap.set('n', '<leader>ta', '<cmd>tabnew<CR>', { desc = 'Open new tab' }) -- open new tab
-keymap.set('n', '<leader>tx', '<cmd>tabclose<CR>', { desc = 'Close current tab' }) -- close current tab
-keymap.set('n', '<leader>tn', '<cmd>tabn<CR>', { desc = 'Go to next tab' }) --  go to next tab
-keymap.set('n', '<leader>tp', '<cmd>tabp<CR>', { desc = 'Go to previous tab' }) --  go to previous tab
-keymap.set('n', '<leader>tf', '<cmd>tabnew %<CR>', { desc = 'Open current buffer in new tab' }) --  move current buffer to new tab
-
 local function opts(desc)
   local options = { noremap = true, silent = true }
   if desc then
@@ -23,6 +11,18 @@ local function opts(desc)
   end
   return options
 end
+
+-- window management
+keymap.set('n', '<leader>sv', '<C-w>v', opts 'Split window vertically') -- split window vertically
+keymap.set('n', '<leader>sh', '<C-w>s', opts 'Split window horizontally') -- split window horizontally
+keymap.set('n', '<leader>se', '<C-w>=', opts 'Make splits equal size') -- make split windows equal width & height
+keymap.set('n', '<leader>sx', '<cmd>close<CR>', opts 'Close current split') -- close current split window
+
+keymap.set('n', '<leader>ta', '<cmd>tabnew<CR>', opts 'Open new tab') -- open new tab
+keymap.set('n', '<leader>tx', '<cmd>tabclose<CR>', opts 'Close current tab') -- close current tab
+keymap.set('n', '<leader>tn', '<cmd>tabn<CR>', opts 'Go to next tab') --  go to next tab
+keymap.set('n', '<leader>tp', '<cmd>tabp<CR>', opts 'Go to previous tab') --  go to previous tab
+keymap.set('n', '<leader>tf', '<cmd>tabnew %<CR>', opts 'Open current buffer in new tab') --  move current buffer to new tab
 
 keymap.set({ 'v', 'n' }, '<leader>h', '^', opts 'Move to beginning of line')
 keymap.set({ 'v', 'n' }, '<leader>l', '$', opts 'Move to end of line')
@@ -36,6 +36,10 @@ keymap.set('n', '<S-CR>', 'o<ESC>', { noremap = true, silent = true })
 
 -- yy to only take text
 keymap.set('n', 'yy', '^vg_y', { desc = 'Yank line text without newline' })
+
+-- personal favorites
+keymap.set('n', '<C-s>', ':w<CR>', opts())
+keymap.set('n', '<C-a>', 'ggVG', opts())
 
 -- navigation
 keymap.set('n', '<C-d>', '<C-d>zz', opts())

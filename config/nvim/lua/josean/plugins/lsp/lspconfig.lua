@@ -17,7 +17,7 @@ return {
     local cmp_nvim_lsp = require 'cmp_nvim_lsp'
 
     local util = require 'lspconfig.util'
-    require('lspconfig').pyright.setup {
+    lspconfig.pyright.setup {
       settings = {
         python = {
           pythonPath = { vim.fn.exepath 'python3' },
@@ -38,7 +38,18 @@ return {
         return root
       end,
     }
-
+    lspconfig.angularls.setup {
+      cmd = {
+        'ngserver',
+        '--stdio',
+        '--tsProbeLocations',
+        '/Users/alean/.local/share/fnm/node-versions/v20.19.0/installation/lib/node_modules', -- adjust to match your global npm path
+        '--ngProbeLocations',
+        '/Users/alean/.local/share/fnm/node-versions/v20.19.0/installation/lib/node_modules',
+      },
+      filetypes = { 'typescript', 'html' },
+      root_dir = lspconfig.util.root_pattern('angular.json', 'project.json'),
+    }
     local keymap = vim.keymap -- for conciseness
 
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -46,7 +57,7 @@ return {
       callback = function(ev)
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local opts = { buffer = ev.buf, silent = true }
+        local opts = { buffer = ev.buf, silent = true, noremap = true }
 
         -- set keybinds
         opts.desc = 'Show LSP references'
@@ -77,11 +88,6 @@ return {
         keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts) -- show diagnostics for line
 
         opts.desc = 'Go to previous diagnostic'
-        keymap.set('n', '[d', vim.diagnostic.get_prev, opts) -- jump to previous diagnostic in buffer
-
-        opts.desc = 'Go to next diagnostic'
-        keymap.set('n', ']d', vim.diagnostic.get_next, opts) -- jump to next diagnostic in buffer
-
         opts.desc = 'Show documentation for what is under cursor'
         keymap.set('n', 'gh', vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
@@ -111,6 +117,9 @@ return {
       },
     }
 
+    mason_lspconfig.setup {
+      ensure_installed = { 'angularls' },
+    }
     mason_lspconfig.setup_handlers {
       -- default handler for installed servers
       function(server_name)

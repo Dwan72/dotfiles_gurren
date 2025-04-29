@@ -1,3 +1,9 @@
+local function opts(desc)
+  return {
+    silent = true,
+    desc = desc,
+  }
+end
 return {
   {
     'rcarriga/nvim-dap-ui',
@@ -17,18 +23,18 @@ return {
       },
     },
     keys = {
-      { '<leader>dc', [[:lua require('dap').continue()<cr>]], silent = true },
-      { '<leader>do', [[:lua require('dap').step_over()<cr>]], silent = true },
-      { '<leader>di', [[:lua require('dap').step_into()<cr>]], silent = true },
-      { '<leader>dt', [[:lua require('dap').step_out()<cr>]], silent = true },
-      { '<leader>db', [[:lua require('dap').toggle_breakpoint()<cr>]], silent = true },
+      { '<localleader>dc', [[:lua require('dap').continue()<cr>]], opts 'Dap continue' },
+      { '<localleader>do', [[:lua require('dap').step_over()<cr>]], opts 'step over' },
+      { '<localleader>di', [[:lua require('dap').step_into()<cr>]], opts 'Dap step into' },
+      { '<localleader>dt', [[:lua require('dap').step_out()<cr>]], opts 'Dap step out' },
+      { '<localleader>db', [[:lua require('dap').toggle_breakpoint()<cr>]], opts 'Dap toggle breakpoint' },
       {
-        '<leader>dB',
+        '<localleader>dB',
         [[:lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>]],
-        silent = true,
+        opts 'Dap set breakpoint',
       },
-      { '<leader>dr', [[:lua require('dap').repl_open()<cr>]], silent = true },
-      { '<leader>du', [[:lua require('dapui').toggle()<cr>]], silent = true },
+      { '<localleader>dr', [[:lua require('dap').repl_open()<cr>]], opts 'Dap repl_open' },
+      { '<localleader>du', [[:lua require('dapui').toggle()<cr>]], opts 'Dap UI toggle' },
     },
     config = function()
       local dap = require 'dap'
