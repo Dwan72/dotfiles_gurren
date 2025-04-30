@@ -64,6 +64,6 @@ The Neovim configuration is split into many files and is located in
 * [`init.lua`](./config/nvim/init.lua): basic settings and requiring other files
 
 
-## More screenshots
+## Screenshots
 <img width="1890" alt="image" src="https://github.com/user-attachments/assets/19e78315-51d8-464f-ad5b-664eac2f7e38" />
 
