@@ -15,7 +15,7 @@ return {
           all = {
             ui = {
               bg_gutter = 'none',
-              bg = '#1b1b23',
+              bg = '#A03232',
             },
           },
         },
