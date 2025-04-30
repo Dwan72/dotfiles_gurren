@@ -1,7 +1,5 @@
 # My dotfiles
 
-![Main](https://github.com/user-attachments/assets/3d183c91-0cc5-4c4a-a530-0e13d51fd927)
-
 Some of the configuration includes:
 
 * Editor - [neovim](https://neovim.io)
