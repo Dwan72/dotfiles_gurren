@@ -67,5 +67,6 @@ The Neovim configuration is split into many files and is located in
 ## Screenshots
 <img width="1890" alt="image" src="https://github.com/user-attachments/assets/19e78315-51d8-464f-ad5b-664eac2f7e38" />
 
+[space] is <leader> I just happen to use space for my leader key
 <img width="1038" alt="image" src="https://github.com/user-attachments/assets/969995c1-256a-4dbd-8e20-31175821c97d" />
 
