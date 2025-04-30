@@ -56,10 +56,6 @@ Maybe run `./bin/makesymlinks` again.
 The Neovim configuration is split into many files and is located in 
 [`config/nvim/`](./config/nvim).
 
-* [`autoload/`](./config/nvim/autoload): functions that are used in other files 
-  and can be autoloaded. I still have a few functions here that I haven't 
-  converted to Lua.
-* [`ftplugin/`](./config/nvim/ftplugin): configuration for specific file types
 * [`lua/josean/`](./config/nvim/lua/j): Lua files for settings, mappings, and my own 
   modules
 * [`lua/josean/plugins/`](./config/nvim/lua/j/plugins): configuration of plugins
