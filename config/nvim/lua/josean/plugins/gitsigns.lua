@@ -26,6 +26,7 @@ return {
         end)
         map('n', '<leader>gp', gitsigns.preview_hunk, { desc = 'preview hunk' })
         map('n', '<leader>gi', gitsigns.preview_hunk_inline, { desc = 'preview hunk inline ' })
+        map('n', '<leader>ga', gitsigns.reset_buffer, { desc = 'reset buffer' })
         map('n', '<leader>gb', function()
           gitsigns.blame_line { full = true }
         end, { desc = 'blame line' })

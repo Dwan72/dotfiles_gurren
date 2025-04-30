@@ -77,6 +77,6 @@ function M.statusline()
   )
 end
 
-vim.o.statusline = [[%!v:lua.require('j.statusline').statusline()]]
+vim.o.statusline = [[%!v:lua.require('josean/plugins/statusline.lua').statusline()]]
 
 return M
