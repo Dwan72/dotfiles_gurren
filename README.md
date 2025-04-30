@@ -69,9 +69,5 @@ The Neovim configuration is split into many files and is located in
 
 
 ## More screenshots
+<img width="1890" alt="image" src="https://github.com/user-attachments/assets/19e78315-51d8-464f-ad5b-664eac2f7e38" />
 
-![Busy](https://github.com/user-attachments/assets/5e280aea-374c-4808-8f63-3d39d437e59b)
-
-![Finder](https://github.com/user-attachments/assets/30d8bde9-9be6-4216-abb2-b6eaf844b2d0)
-
-![Completion](https://github.com/user-attachments/assets/e19e2f6e-b175-4424-a141-05d1235f0c6f)
