@@ -60,10 +60,10 @@ The Neovim configuration is split into many files and is located in
   and can be autoloaded. I still have a few functions here that I haven't 
   converted to Lua.
 * [`ftplugin/`](./config/nvim/ftplugin): configuration for specific file types
-* [`lua/j/`](./config/nvim/lua/j): Lua files for settings, mappings, and my own 
+* [`lua/josean/`](./config/nvim/lua/j): Lua files for settings, mappings, and my own 
   modules
-* [`lua/j/plugins/`](./config/nvim/lua/j/plugins): configuration of plugins
-* [`lua/j/plugins/lsp/`](./config/nvim/lua/j/plugins/lsp): configuration for 
+* [`lua/josean/plugins/`](./config/nvim/lua/j/plugins): configuration of plugins
+* [`lua/josean/plugins/lsp/`](./config/nvim/lua/j/plugins/lsp): configuration for 
   Neovim's built-in LSP
 * [`init.lua`](./config/nvim/init.lua): basic settings and requiring other files
 
