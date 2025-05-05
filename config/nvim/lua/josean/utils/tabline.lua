@@ -23,6 +23,7 @@ function M.tabline()
   return table.concat(tabs, '')
 end
 
-vim.o.tabline = '%!v:lua.require("josean.plugins.tabline").tabline()'
+vim.o.showtabline = 2
+vim.o.tabline = '%!v:lua.require("josean.utils.tabline").tabline()'
 
 return M

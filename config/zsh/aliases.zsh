@@ -25,7 +25,7 @@ alias server='python -m http.server 3030'
 
 alias tree='tree -aC -I .git -I node_modules'
 
-alias a="source $HOME/dotfiles/bin/project"
+alias a="source $HOME/Projects/dotfiles/bin/project"
 
 # Git
 alias g='git'
@@ -36,6 +36,7 @@ alias gc='git commit -v'
 alias gc!='git commit -v --amend'
 alias gca='git commit -v -a'
 alias gca!='git commit -v -a --amend'
+alias yc='yarn commit'
 alias gco='git checkout'
 alias gd='git diff'
 alias gl='git pull'
@@ -44,11 +45,11 @@ alias glog='git log --oneline --decorate --graph'
 alias gm='git merge'
 alias gp='git push'
 alias gpf='git push --force'
-alias gst='git status'
-alias gs='git stash'
+alias gs='git status'
+alias gst='git stash'
 alias gsp='git stash pop'
 alias lg='lazygit'
-
+alias gpa='git push alean $(git branch --show-current)'
 
 # Utils & alternatives
 

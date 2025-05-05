@@ -10,11 +10,10 @@ return {
   config = function()
     local highlight = {
       'someRed',
-      -- 'IblScope',
     }
     local hooks = require 'ibl.hooks'
     hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-      vim.api.nvim_set_hl(0, 'someRed', { fg = '#252530' })
+      vim.api.nvim_set_hl(0, 'someRed', { fg = '#323242' })
       vim.api.nvim_set_hl(0, 'IblScope', { fg = '#484857' })
     end)
 
@@ -24,8 +23,19 @@ return {
         highlight = highlight,
       },
       scope = {
+        enabled = true,
         show_start = false,
         show_end = false,
+        include = {
+          node_type = {
+            typescript = {
+              'object_type',
+              'class_body',
+              'interface_body',
+            },
+            ['*'] = { '*' }, -- catch-all fallback for all nodes and languages
+          },
+        },
       },
     }
   end,
