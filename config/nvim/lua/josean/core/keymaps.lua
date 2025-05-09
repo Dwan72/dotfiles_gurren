@@ -30,6 +30,9 @@ keymap.set({ 'v', 'n' }, '<leader>l', '$', opts 'Move to end of line')
 keymap.set({ 'v', 'n' }, 'J', '5j', { noremap = true, silent = true })
 keymap.set({ 'v', 'n' }, 'K', '5k', { nowait = true, noremap = true, silent = true })
 
+-- adding comment to EOL
+keymap.set('n', '<C-,>', 'A,', opts 'comma at EOL')
+
 -- shift enter to move to new line
 keymap.set('i', '<S-CR>', '<ESC>o', { noremap = true, silent = true })
 keymap.set('n', '<S-CR>', 'o<ESC>', { noremap = true, silent = true })
