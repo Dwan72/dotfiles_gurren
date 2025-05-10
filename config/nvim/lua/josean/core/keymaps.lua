@@ -24,6 +24,9 @@ keymap.set('n', '<leader>tn', '<cmd>tabn<CR>', opts 'Go to next tab') --  go to 
 keymap.set('n', '<leader>tp', '<cmd>tabp<CR>', opts 'Go to previous tab') --  go to previous tab
 keymap.set('n', '<leader>tf', '<cmd>tabnew %<CR>', opts 'Open current buffer in new tab') --  move current buffer to new tab
 
+keymap.set('n', '<C-]>', '<cmd>tabn<CR>', opts 'Go to next tab') --  go to next tab
+keymap.set('n', '<C-[>', '<cmd>tabp<CR>', opts 'Go to previous tab') --  go to previous tab
+
 keymap.set({ 'v', 'n' }, '<leader>h', '^', opts 'Move to beginning of line')
 keymap.set({ 'v', 'n' }, '<leader>l', '$', opts 'Move to end of line')
 
@@ -57,3 +60,8 @@ keymap.set('n', '*', 'yiw:let @/=@"<CR>:set hls<CR>zz', opts 'Smart search word 
 
 -- get filepath
 keymap.set('n', '<leader>cp', ':let @+ = expand("%:p")<CR>', opts 'Get full file path')
+
+-- make esc holy
+vim.keymap.set('n', '<Esc>', '<Esc>', opts '')
+vim.keymap.set('i', '<Esc>', '<Esc>', opts '')
+vim.keymap.set('v', '<Esc>', '<Esc>', opts '')
