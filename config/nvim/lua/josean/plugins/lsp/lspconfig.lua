@@ -118,33 +118,13 @@ return {
     }
 
     mason_lspconfig.setup {
-      ensure_installed = { 'angularls' },
-      automatic_enable = true,
+      ensure_installed = { 'angularls', 'gopls' },
+      automatic_installation = true,
     }
-    -- mason_lspconfig.setup_handlers {
-    --   -- default handler for installed servers
-    --   function(server_name)
-    --     lspconfig[server_name].setup {
-    --       capabilities = capabilities,
-    --     }
-    --   end,
-    --   ['lua_ls'] = function()
-    --     -- configure lua server (with special settings)
-    --     lspconfig['lua_ls'].setup {
-    --       capabilities = capabilities,
-    --       settings = {
-    --         lua = {
-    --           -- make the language server recognize "vim" global
-    --           diagnostics = {
-    --             globals = { 'vim' },
-    --           },
-    --           completion = {
-    --             callsnippet = 'replace',
-    --           },
-    --         },
-    --       },
-    --     }
-    --   end,
-    -- }
+    mason_lspconfig.setup_handlers {
+      function(server_name)
+        lspconfig[server_name].setup {}
+      end,
+    }
   end,
 }
