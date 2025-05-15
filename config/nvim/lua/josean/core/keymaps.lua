@@ -33,7 +33,7 @@ keymap.set({ 'v', 'n' }, '<leader>l', '$', opts 'Move to end of line')
 keymap.set({ 'v', 'n' }, 'J', '5j', { noremap = true, silent = true })
 keymap.set({ 'v', 'n' }, 'K', '5k', { nowait = true, noremap = true, silent = true })
 
--- adding comment to EOL
+-- adding comma to EOL
 keymap.set('n', '<C-,>', 'A,', opts 'comma at EOL')
 
 -- shift enter to move to new line
@@ -62,6 +62,25 @@ keymap.set('n', '*', 'yiw:let @/=@"<CR>:set hls<CR>zz', opts 'Smart search word 
 keymap.set('n', '<leader>cp', ':let @+ = expand("%:p")<CR>', opts 'Get full file path')
 
 -- make esc holy
-vim.keymap.set('n', '<Esc>', '<Esc>', opts '')
-vim.keymap.set('i', '<Esc>', '<Esc>', opts '')
-vim.keymap.set('v', '<Esc>', '<Esc>', opts '')
+keymap.set('n', '<Esc>', '<Esc>', opts '')
+keymap.set('i', '<Esc>', '<Esc>', opts '')
+keymap.set('v', '<Esc>', '<Esc>', opts '')
+
+-- for zerg like tab switching
+for i = 1, 5 do
+  vim.keymap.set('n', '<F' .. i .. '>', function()
+    local tab_count = #vim.api.nvim_list_tabpages()
+    local current_buf = vim.api.nvim_get_current_buf()
+
+    -- Create new tabs if needed
+    if tab_count < i then
+      for _ = tab_count + 1, i do
+        vim.cmd 'tabnew' -- Create new tab
+        vim.api.nvim_set_current_buf(current_buf) -- Set current buffer in new tab
+      end
+    end
+
+    -- Go to the requested tab
+    vim.cmd(i .. 'tabnext')
+  end, { desc = 'Go to or create tab ' .. i .. ' with current buffer' })
+end

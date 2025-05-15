@@ -4,7 +4,6 @@ return {
   dependencies = { 'nvim-lua/plenary.nvim' },
   config = function()
     local harpoon = require 'harpoon'
-    harpoon:setup {}
 
     -- Telescope harpoon picker
     local conf = require('telescope.config').values
@@ -36,29 +35,18 @@ return {
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end, opts_with_desc 'Harpoon toggle quick menu')
 
-    -- vim.keymap.set('n', '<leader>p', function()
-    --   toggle_telescope(harpoon:list())
-    -- end, opts_with_desc('Harpoon list', { nowait = true }))
+    vim.keymap.set('n', '<leader>a', function()
+      harpoon:list():add()
+    end)
+
+    for _, i in ipairs { 1, 2, 3, 4 } do
+      vim.keymap.set('n', '<C-' .. i .. '>', function()
+        harpoon:list():select(i)
+      end, opts_with_desc('Harpoon go to ' .. i))
+    end
 
     vim.keymap.set('n', '<leader>p', function()
-      harpoon:list():add()
-    end, opts_with_desc 'Harpoon add to list')
-
-    -- ✨ UPDATED: <leader> goes to file
-    vim.keymap.set('n', '<leader>1', function()
-      harpoon:list():select(1)
-    end, opts_with_desc 'Harpoon go to 1')
-
-    vim.keymap.set('n', '<leader>2', function()
-      harpoon:list():select(2)
-    end, opts_with_desc 'Harpoon go to 2')
-
-    vim.keymap.set('n', '<leader>3', function()
-      harpoon:list():select(3)
-    end, opts_with_desc 'Harpoon go to 3')
-
-    vim.keymap.set('n', '<leader>4', function()
-      harpoon:list():select(4)
-    end, opts_with_desc 'Harpoon go to 4')
+      toggle_telescope(harpoon:list())
+    end, opts_with_desc('Harpoon list', { nowait = true }))
   end,
 }
