@@ -120,6 +120,7 @@ return {
     mason_lspconfig.setup {
       ensure_installed = { 'angularls', 'gopls' },
       automatic_installation = true,
+      automatic_enable = true,
     }
     mason_lspconfig.setup_handlers {
       function(server_name)
