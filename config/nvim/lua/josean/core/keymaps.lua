@@ -42,6 +42,7 @@ keymap.set('n', '<S-CR>', 'o<ESC>', { noremap = true, silent = true })
 
 -- yy to only take text
 keymap.set('n', 'yy', '^vg_y', { desc = 'Yank line text without newline' })
+keymap.set('v', 'p', '"_dhp', opts 'Paste without yanking selection')
 
 -- personal favorites
 keymap.set('n', '<C-s>', ':w<CR>', opts())
