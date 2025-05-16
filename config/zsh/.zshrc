@@ -113,3 +113,5 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 
 export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+# pylintrc
+export PYLINTRC="$HOME/Projects/dotfiles_gurren/dots/.pylintrc"
