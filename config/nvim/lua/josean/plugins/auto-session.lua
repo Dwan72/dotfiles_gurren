@@ -9,7 +9,7 @@ return {
       git_use_branch_name = true,
       log_level = 'error',
       pre_save_cmds = { 'silent! wa' },
-      root_dir = '/Users/alean/.local/share/nvim/sessions/',
+      root_dir = '$HOME/.local/share/nvim/sessions/',
       save_buffers_with_tabs = true,
       saveopt = {
         sessionoptions = 'blank,buffers,curdir,folds,globals,help,tabpages,terminal,winsize',

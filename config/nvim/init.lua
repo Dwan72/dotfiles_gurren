@@ -8,3 +8,5 @@ require('lazy').setup {
   { import = 'josean.plugins' },
   { import = 'josean.plugins.lsp' },
 }
+
+vim.g.python3_host_prog = '$HOME/.pyenv/shims/python3'
