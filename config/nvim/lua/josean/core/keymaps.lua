@@ -60,7 +60,8 @@ keymap.set('n', 'U', 'mzJ`z', opts 'Join in place')
 keymap.set('n', '*', 'yiw:let @/=@"<CR>:set hls<CR>zz', opts 'Smart search word under cursor')
 
 -- get filepath
-keymap.set('n', '<leader>cp', ':let @+ = expand("%:p")<CR>', opts 'Get full file path')
+keymap.set('n', '<leader>cP', ':let @+ = expand("%:p")<CR>', opts 'Get full file path')
+keymap.set('n', '<leader>cp', ':let @+ = expand("%")<CR>', opts 'Get relative file path')
 
 -- make esc holy
 keymap.set('n', '<Esc>', '<Esc>', opts '')
@@ -68,7 +69,7 @@ keymap.set('i', '<Esc>', '<Esc>', opts '')
 keymap.set('v', '<Esc>', '<Esc>', opts '')
 
 -- for zerg like tab switching
-for i = 1, 5 do
+for i = 1, 6 do
   vim.keymap.set('n', '<F' .. i .. '>', function()
     local tab_count = #vim.api.nvim_list_tabpages()
     local current_buf = vim.api.nvim_get_current_buf()

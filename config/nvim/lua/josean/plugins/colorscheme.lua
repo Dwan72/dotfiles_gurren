@@ -24,8 +24,7 @@ return {
       overrides = function(colors)
         ---@type ThemeColors
         local theme = colors.theme
-        local bit_lighter_than_bg = '#2e2e3a'
-
+        local bit_lighter_than_bg = '#3a3a47'
         return {
           CursorLine = { bg = bit_lighter_than_bg },
           ColorColumn = { bg = bit_lighter_than_bg },
