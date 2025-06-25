@@ -28,14 +28,6 @@ return {
         },
       },
     }
-    -- auto save sesion before quitting
-    vim.api.nvim_create_autocmd('VimLeavePre', {
-      callback = function()
-        -- Save session before quitting
-        vim.cmd 'SessionSave'
-      end,
-      group = vim.api.nvim_create_augroup('AutoSessionSaveOnQuit', { clear = true }),
-    })
 
     vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
     -- Optional key mappings for session management

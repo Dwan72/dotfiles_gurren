@@ -3,7 +3,6 @@ vim.cmd 'let g:netrw_liststyle = 3'
 local opt = vim.opt
 
 opt.scrolloff = 12
-opt.relativenumber = true
 opt.number = true
 
 -- tabs & indentation
